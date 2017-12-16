@@ -43,6 +43,18 @@ void cum3(double *etain, int *neta, int *typein, int *ntrials, double *cumout)
 				break;
 				}
 
+        case NEGBIN:
+	 	   if(eta>0)
+				{
+//				cumout[0]+= ntr*(eta+log1p(exp(-eta)));
+				break;
+				}
+   	    	else
+				{
+//				cumout[0]+= ntr*log1p(exp(eta));
+				break;
+				}
+
 	    default:
 	        error("unrecognized type");
 			break;

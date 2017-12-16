@@ -5,6 +5,7 @@
 #define BERNOULLI 1
 #define POISSON 2
 #define BINOMIAL 3
+#define NEGBIN 4
 
 #include <R.h>
 #include <R_ext/BLAS.h>
