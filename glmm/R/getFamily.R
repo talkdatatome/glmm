@@ -70,3 +70,29 @@ binomial.glmm <-function()
 	class(out)<-"glmm.family"
 	return(out)
 }
+
+negative_binomial.glmm <- function()
+{
+	family.glmm<- "negative_binomial.glmm"
+	link<-"log"
+    # not fixed yet
+    cum <- function(){}
+    cum <- Vectorize(cum)
+    cp <- function(){}
+    cpp <- function(){}
+#	cum <- function(eta, ntrials){ 
+#		if(eta>0) ntrials*(eta+log1p(exp(-eta)))
+#		else ntrials*log1p(exp(eta))}
+#	cum<-Vectorize(cum)
+#	cp <- function(eta, ntrials) {ntrials/(1+exp(-eta))}
+#	cpp<-function(eta, ntrials) {(ntrials/(1+exp(-eta)))*(1/(1+exp(eta)))}
+	checkData<-function(x) {
+		bads<-sum(x<0)
+		if(bads>0) stop("response must be a count (nonnegative integer).")
+		return(NULL)	
+		}
+	out<-list(family.glmm=family.glmm, link=link, cum=cum, cp=cp, cpp=cpp, checkData=checkData)
+	class(out)<-"glmm.family"
+	return(out)
+
+}
